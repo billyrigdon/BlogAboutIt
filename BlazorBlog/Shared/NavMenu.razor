@@ -1,0 +1,72 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">BlazorLogin</a>
+    <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</div>
+
+<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+  <nav class="flex-column">
+    @if (!AuthService.IsLoggedIn)
+    {
+      <li class="nav-item px-3">
+        <NavLink class="nav-link" href="register">
+          <span class="oi oi-account-login" aria-hidden="true"></span> Register
+        </NavLink>
+      </li>
+      <li class="nav-item px-3">
+        <NavLink class="nav-link" href="login">
+          <span class="oi oi-account-login" aria-hidden="true"></span> Login
+        </NavLink>
+      </li>
+    }
+    @if (AuthService.IsLoggedIn)
+    {
+      <li class="nav-item px-3">
+        <NavLink class="nav-link" href="landing">
+          <span class="oi oi-cloud-upload" aria-hidden="true"></span> Landing
+        </NavLink>
+      </li>
+      <li class="nav-item px-3">
+        <NavLink class="nav-link" @onclick="Logout">
+          <span class="oi oi-cloud-upload" aria-hidden="true"></span> Logout
+        </NavLink>
+      </li>
+    }
+  </nav>
+</div>
+
+@code {
+  @using BlazorBlog.Services;
+  @inject IJSRuntime JSRuntime;
+
+  @inject NavigationManager NavigationManager;
+
+  @inject AuthService AuthService;
+  private bool collapseNavMenu = true;
+
+  private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+  private bool isLoggedIn = false;
+
+  protected override async Task OnInitializedAsync()
+  {
+    AuthService.OnChange += StateHasChanged;
+  }
+
+  private void Logout()
+  {
+    JSRuntime.InvokeAsync<string>("localStorage.removeItem", "token");
+    JSRuntime.InvokeAsync<string>("localStorage.removeItem", "userId");
+    AuthService.Logout();
+    NavigationManager.NavigateTo("/login");
+  }
+
+  private void ToggleNavMenu()
+  {
+    collapseNavMenu = !collapseNavMenu;
+  }
+
+}

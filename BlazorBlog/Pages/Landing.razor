@@ -1,0 +1,51 @@
+@page "/landing"
+
+@using BlazorBlog.Models
+@inject IConfiguration Configuration;
+@inject IJSRuntime JSRuntime;
+<h3>LandingPage</h3>
+
+@if (posts == null)
+{
+  <p>Loading...</p>
+}
+else
+{
+  <div>
+  @foreach (var post in posts)
+    {
+      <div>
+        <h5>@post.Content</h5>
+        <img src="@post.Image" alt="Post image" />
+      </div>
+    }
+  </div>
+}
+
+@code {
+  private List<Post> posts;
+
+  protected override async Task OnInitializedAsync()
+  {
+    var apiUrl = Configuration["Api:GraphQLApiUrl"];
+    var token = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "token");
+
+    var httpClient = new HttpClient();
+    httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+    var query = "{ posts { content image } }";
+    var response = await httpClient.PostAsJsonAsync(apiUrl, new { query });
+    var data = await response.Content.ReadFromJsonAsync<GraphQLResponse>();
+    posts = data.Data.Posts;
+  }
+
+  private class GraphQLResponse
+  {
+    public Data Data { get; set; }
+  }
+
+  private class Data
+  {
+    public List<Post> Posts { get; set; }
+  }
+}

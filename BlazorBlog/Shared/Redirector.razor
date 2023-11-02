@@ -1,0 +1,21 @@
+@using BlazorBlog.Services;
+@inject AuthService AuthService
+@inject NavigationManager NavigationManager
+
+@code {
+  protected override async Task OnInitializedAsync()
+  {
+    var isLoggedIn = await AuthService.CheckIsLoggedIn();
+
+    var path = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+
+    if (!isLoggedIn && (path != "login" && path != "register"))
+    {
+      NavigationManager.NavigateTo("/login");
+    }
+    else if (isLoggedIn && path == "")
+    {
+      NavigationManager.NavigateTo("/landing");
+    }
+  }
+}

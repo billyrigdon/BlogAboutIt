@@ -1,0 +1,41 @@
+@page "/upload"
+@inject HttpClient Http
+@inject IConfiguration Configuration
+@inject IJSRuntime JSRuntime;
+
+<h3>Upload Video</h3>
+
+<InputFile OnChange="@HandleFileSelected" />
+
+@code {
+
+
+  private ElementReference inputFile;
+
+  private async Task HandleFileSelected(InputFileChangeEventArgs e)
+  {
+    var file = e.File;
+    if (file != null)
+    {
+      var token = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "token");
+      var content = new MultipartFormDataContent();
+      var fileContent = new StreamContent(file.OpenReadStream());
+      content.Add(fileContent, "file", file.Name);
+
+      var requestMessage = new HttpRequestMessage(HttpMethod.Post, "upload");
+      requestMessage.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+      requestMessage.Content = content;
+
+      var response = await Http.SendAsync(requestMessage);
+
+      if (response.IsSuccessStatusCode)
+      {
+        Console.WriteLine("File uploaded successfully!");
+      }
+      else
+      {
+        Console.WriteLine($"File upload failed: {response.StatusCode}");
+      }
+    }
+  }
+}

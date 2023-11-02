@@ -1,0 +1,61 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = BlazorLogin
+build_property.RootNamespace = BlazorLogin
+build_property.ProjectDir = /Users/billyrigdon/Code/BlazorLogin/
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/billyrigdon/Code/BlazorLogin
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/billyrigdon/Code/BlazorLogin/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/billyrigdon/Code/BlazorLogin/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/billyrigdon/Code/BlazorLogin/Pages/Landing.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGFuZGluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/billyrigdon/Code/BlazorLogin/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/billyrigdon/Code/BlazorLogin/Pages/MyProfile.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTXlQcm9maWxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/billyrigdon/Code/BlazorLogin/Pages/Registration.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVnaXN0cmF0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/billyrigdon/Code/BlazorLogin/Pages/Upload.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXBsb2FkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/billyrigdon/Code/BlazorLogin/Shared/Redirector.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1JlZGlyZWN0b3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/billyrigdon/Code/BlazorLogin/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/billyrigdon/Code/BlazorLogin/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ebua29f5z5
+
+[/Users/billyrigdon/Code/BlazorLogin/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-7xaw12w2r9

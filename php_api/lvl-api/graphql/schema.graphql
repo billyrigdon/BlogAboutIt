@@ -1,0 +1,55 @@
+type User {
+  id: ID!
+  name: String!
+  userProfile: UserProfile @hasOne
+  posts: [Post] @hasMany
+}
+
+type UserProfile {
+  id: ID!
+  user: User @belongsTo
+  birthday: String
+  created_at: String!
+  updated_at: String!
+  background_picture: String
+  music: String
+  interests: String
+  website: String
+  location: String
+  relationship_status: String
+  display_name: String
+  bio: String
+  profile_picture: String
+}
+
+type Post {
+  id: ID!
+  user: User @belongsTo
+  user_id: ID!
+  created_at: String!
+  updated_at: String!
+  content: String
+  image: String
+}
+
+type Query {
+  user(id: ID! @eq): User @find
+  posts: [Post] @all
+}
+
+type Mutation {
+  updateUserProfile(
+    id: ID!
+    user_id: ID
+    birthday: String
+    background_picture: String
+    music: String
+    interests: String
+    website: String
+    location: String
+    relationship_status: String
+    display_name: String
+    bio: String
+    profile_picture: String
+  ): UserProfile @update @can(policy: "updateUserProfile")
+}
